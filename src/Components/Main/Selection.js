@@ -52,8 +52,7 @@ export default class Selection extends Component {
                             alt={menuItem.title}
                             className={css({
                               height: "auto",
-                              width: "100%",
-                              objectFit: "cover"
+                              width: "100%"
                             })}
                           />
                         </Grid>
