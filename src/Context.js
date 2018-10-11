@@ -5,6 +5,25 @@ const Context = React.createContext();
 
 const reducer = (state, action) => {
   switch (action.type) {
+    case "ADD_ITEM":
+      return {
+        ...state,
+        [action.payload.course]: [
+          ...state[action.payload.course],
+          action.payload.id
+        ]
+      };
+
+    case "REMOVE_ITEM":
+      return {
+        ...state,
+        [action.payload.course]: [
+          ...state[action.payload.course].filter(
+            item => item !== action.payload.id
+          )
+        ]
+      };
+
     default:
       return state;
   }
@@ -13,6 +32,12 @@ const reducer = (state, action) => {
 export class Provider extends Component {
   state = {
     menu: [],
+    appetizer: [],
+    soup: [],
+    fish: [],
+    salad: [],
+    main: [],
+    dessert: [],
     dispatch: action => {
       this.setState(state => reducer(state, action));
     }
