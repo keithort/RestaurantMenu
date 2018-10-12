@@ -141,7 +141,7 @@ export default class Course extends Component {
             const { dispatch } = value;
             return (
               <MuiThemeProvider theme={typographyV1Theme}>
-                <Typography variant="h3" gutterBottom>
+                <Typography variant="h3" gutterBottom align="center">
                   {COURSES[this.props.step]}
                 </Typography>
                 <Grid container direction="row" alignItems="stretch">
@@ -156,7 +156,8 @@ export default class Course extends Component {
                     >
                       <CardActionArea
                         className={css({
-                          height: "100%"
+                          height: "100%",
+                          width: "100%"
                         })}
                         onClick={() =>
                           this.handleClick(dispatch, item.id, item.allergy)

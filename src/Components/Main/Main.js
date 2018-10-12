@@ -3,21 +3,23 @@ import { css } from "emotion";
 
 import { Consumer } from "../../Context";
 
+import Progress from "./Progress";
 import Menus from "./Menus";
 import Selections from "./Selections";
 import Navigation from "../Navigation/Navigation";
 
 export default class Main extends Component {
-  renderMenu = step => (
+  renderMenu = () => (
     <div>
-      <Menus step={step} />
-      <Navigation step={step} />
+      <Progress />
+      <Menus />
+      <Navigation />
     </div>
   );
 
-  renderSelections = value => (
+  renderSelections = () => (
     <div>
-      <Selections choices={value} />
+      <Selections />
     </div>
   );
 
@@ -28,9 +30,7 @@ export default class Main extends Component {
           const { step } = value;
           return (
             <main className={css({ padding: "1em" })}>
-              {step !== 6
-                ? this.renderMenu(step)
-                : this.renderSelections(value)}
+              {step !== 6 ? this.renderMenu() : this.renderSelections()}
             </main>
           );
         }}

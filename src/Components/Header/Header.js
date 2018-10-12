@@ -7,7 +7,7 @@ export default class Header extends Component {
   render() {
     return (
       <header>
-        <h1 className={css({ fontSize: "2rem" })}>
+        <h1 className={css({ padding: "0 1em" })}>
           <img
             src={Logo}
             className={css({ maxWidth: "5em", height: "auto", width: "100%" })}
