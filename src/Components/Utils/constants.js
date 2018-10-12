@@ -3,7 +3,7 @@ export const COURSES = [
   "Soup",
   "Fish",
   "Salad",
-  "Main Course",
+  "Main",
   "Dessert"
 ];
 

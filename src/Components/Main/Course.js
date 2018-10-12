@@ -12,8 +12,26 @@ import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 
 import { Consumer } from "../../Context";
 
-import Spice from "./spice.jpg";
+import Spice from "./icon-spice.jpg";
 import { COURSES, COURSES_SHORT } from "../Utils/constants";
+
+import egg from "./icon-egg.png";
+import fish from "./icon-fish.png";
+import gluten from "./icon-gluten.png";
+import milk from "./icon-milk.png";
+import mushrooms from "./icon-mushroom.png";
+import nuts from "./icon-nuts.png";
+import shellfish from "./icon-shellfish.png";
+
+const Icons = {
+  egg,
+  fish,
+  gluten,
+  milk,
+  mushrooms,
+  nuts,
+  shellfish
+};
 
 function typographyV1Theme() {
   return createMuiTheme({
@@ -73,15 +91,24 @@ export default class Course extends Component {
 
   renderAllergens = allergens =>
     allergens.length ? (
-      <div className={css({ fontStyle: "italic" })}>
-        Allergens:{" "}
+      <span className={css({ fontStyle: "italic" })}>
+        <strong>Allergens:</strong>{" "}
         {allergens.map((allergen, index) => (
-          <span key={index}>
-            {allergen}
-            {index + 1 !== allergens.length ? ", " : ""}
+          <span
+            key={allergen}
+            className={css({
+              display: "inline-block",
+              marginRight: ".5em"
+            })}
+          >
+            <img
+              src={Icons[allergen]}
+              alt={allergen}
+              className={css({ height: "auto", width: "1em" })}
+            />
           </span>
         ))}
-      </div>
+      </span>
     ) : null;
 
   renderSpiceLevel = spiceLevel => {
@@ -90,8 +117,8 @@ export default class Course extends Component {
       arr.push(i);
     }
     return spiceLevel ? (
-      <div className={css({ fontStyle: "italic" })}>
-        Spice Level:{" "}
+      <span className={css({ fontStyle: "italic" })}>
+        <strong>Spice Level:</strong>{" "}
         {arr.map((level, index) => (
           <img
             key={index}
@@ -100,7 +127,7 @@ export default class Course extends Component {
             className={css({ height: "auto", width: "1em" })}
           />
         ))}
-      </div>
+      </span>
     ) : null;
   };
 
@@ -156,10 +183,10 @@ export default class Course extends Component {
                             <Typography variant="body1" gutterBottom>
                               {item.description}
                             </Typography>
-                            <Typography variant="caption" gutterBottom>
+                            <Typography variant="body2" gutterBottom>
                               {this.renderAllergens(item.allergy)}
                             </Typography>
-                            <Typography variant="caption" gutterBottom>
+                            <Typography variant="body2" gutterBottom>
                               {this.renderSpiceLevel(item.spiceLevel)}
                             </Typography>
                           </CardContent>
