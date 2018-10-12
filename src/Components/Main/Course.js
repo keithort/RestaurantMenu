@@ -15,9 +15,8 @@ import { Consumer } from "../../Context";
 import Spice from "./spice.jpg";
 import { COURSES, COURSES_SHORT } from "../Utils/constants";
 
-function typographyV1Theme(theme) {
+function typographyV1Theme() {
   return createMuiTheme({
-    ...theme,
     typography: {
       suppressDeprecationWarnings: true,
       useNextVariants: true

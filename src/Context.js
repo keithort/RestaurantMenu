@@ -14,6 +14,18 @@ const reducer = (state, action) => {
         ]
       };
 
+    case "NEXT_MENU":
+      return {
+        ...state,
+        step: state.step + 1
+      };
+
+    case "PREVIOUS_MENU":
+      return {
+        ...state,
+        step: state.step - 1
+      };
+
     case "REMOVE_ITEM":
       return {
         ...state,
@@ -32,6 +44,7 @@ const reducer = (state, action) => {
 export class Provider extends Component {
   state = {
     menu: [],
+    step: 0,
     appetizer: [],
     soup: [],
     fish: [],
