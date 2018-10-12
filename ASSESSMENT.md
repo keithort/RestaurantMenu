@@ -10,7 +10,7 @@ The stylesheet located at `src/index.css` is the only one for the site. This sho
 Material UI's Grid is used for the flexbox based, responsive design. 
 
 ## Demo
-[Surge](https://observant-attack.surge.sh)
+[Surge](https://brainy-steel.surge.sh/)
 
 ## Installation and Running
 * Run `cd menu`

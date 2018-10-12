@@ -31,13 +31,12 @@ export default class Allergies extends Component {
           const allergens = Array.from(new Set(allergy.flat(1)));
           return (
             <Typography
-              color="error"
-              variant="body1"
+              variant="subheading"
               gutterBottom
               className={css({
                 borderBottom: "1px solid red",
                 borderTop: "1px solid red",
-                marginBottom: "1em",
+                marginBottom: "2em",
                 marginTop: "1em",
                 paddingBottom: ".5em",
                 paddingTop: ".5em"
