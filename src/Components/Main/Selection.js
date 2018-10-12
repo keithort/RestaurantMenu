@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import { css } from "emotion";
 
 import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-import Paper from "@material-ui/core/Paper";
+import Card from "@material-ui/core/Card";
+import CardHeader from "@material-ui/core/CardHeader";
+import CardContent from "@material-ui/core/CardContent";
+import CardMedia from "@material-ui/core/CardMedia";
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 
 import { Consumer } from "../../Context";
@@ -40,42 +42,40 @@ export default class Selection extends Component {
           const { menu } = value;
           return (
             <MuiThemeProvider theme={typographyV1Theme}>
-              {value[this.state.id].map(item => {
-                const menuItem = menu[item];
-                return (
-                  <Grid item xs={12} className={css({ marginBottom: "1em" })}>
-                    <Paper>
-                      <Grid container>
-                        <Grid xs={2} className={css({ lineHeight: "0" })}>
-                          <img
-                            src={menuItem.image}
-                            alt={menuItem.title}
-                            className={css({
-                              height: "auto",
-                              width: "100%"
-                            })}
-                          />
-                        </Grid>
-                        <Grid
-                          xs={10}
+              <Grid container className={css({ marginBottom: "1em" })}>
+                {value[this.state.id].map(item => {
+                  const menuItem = menu[item];
+                  return (
+                    <Grid
+                      item
+                      xs={12}
+                      sm={6}
+                      md={4}
+                      className={css({ padding: ".5em" })}
+                      key={menuItem.id}
+                    >
+                      <Card
+                        className={css({
+                          height: "100%"
+                        })}
+                      >
+                        <CardMedia
+                          image={menuItem.image}
+                          title={menuItem.title}
                           className={css({
-                            paddingLeft: "1em",
-                            paddingRight: "1em"
+                            height: 0,
+                            paddingTop: "56.25%"
                           })}
-                        >
-                          <Typography
-                            variant="h5"
-                            gutterBottom
-                            className={css({ marginTop: "1em" })}
-                          >
-                            {menuItem.title}
-                          </Typography>
-                        </Grid>
-                      </Grid>
-                    </Paper>
-                  </Grid>
-                );
-              })}
+                        />
+                        <CardHeader title={menuItem.title} />
+                        <CardContent
+                          className={css({ paddingTop: "0", height: "100%" })}
+                        />
+                      </Card>
+                    </Grid>
+                  );
+                })}
+              </Grid>
             </MuiThemeProvider>
           );
         }}

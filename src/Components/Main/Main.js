@@ -8,60 +8,33 @@ import Selections from "./Selections";
 import Navigation from "../Navigation/Navigation";
 
 export default class Main extends Component {
-  state = {
-    step: 0,
-    appetizer: [],
-    soup: [],
-    fish: [],
-    salad: [],
-    main: [],
-    dessert: []
-  };
+  renderMenu = step => (
+    <div>
+      <Menus step={step} />
+      <Navigation step={step} />
+    </div>
+  );
 
-  nextStep = () => {
-    const { step } = this.state;
-    this.setState({
-      step: step + 1
-    });
-  };
-
-  prevStep = () => {
-    const { step } = this.state;
-    this.setState({
-      step: step - 1
-    });
-  };
-
-  handleChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
-  };
+  renderSelections = value => (
+    <div>
+      <Selections choices={value} />
+    </div>
+  );
 
   render() {
-    if (this.state.step !== 6) {
-      return (
-        <Consumer>
-          {value => {
-            return (
-              <main className={css({ padding: "1em" })}>
-                <Menus step={this.state.step} />
-                <Navigation step={this.state.step} />
-              </main>
-            );
-          }}
-        </Consumer>
-      );
-    } else {
-      return (
-        <Consumer>
-          {value => {
-            return (
-              <main className={css({ padding: "1em" })}>
-                <Selections choices={value} />
-              </main>
-            );
-          }}
-        </Consumer>
-      );
-    }
+    return (
+      <Consumer>
+        {value => {
+          const { step } = value;
+          return (
+            <main className={css({ padding: "1em" })}>
+              {step !== 6
+                ? this.renderMenu(step)
+                : this.renderSelections(value)}
+            </main>
+          );
+        }}
+      </Consumer>
+    );
   }
 }

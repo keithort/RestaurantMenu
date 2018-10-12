@@ -29,7 +29,7 @@ export default class Course extends Component {
     selectedValues: []
   };
 
-  handleClick = async (dispatch, id) => {
+  handleClick = async (dispatch, id, allergy) => {
     if (this.state.selectedValues.includes(id)) {
       dispatch({
         type: "REMOVE_ITEM",
@@ -38,6 +38,12 @@ export default class Course extends Component {
           id
         }
       });
+      if (allergy.length) {
+        dispatch({
+          type: "REMOVE_ALLERGY",
+          payload: allergy
+        });
+      }
       const selectedValues = [
         ...this.state.selectedValues.filter(item => item !== id)
       ];
@@ -52,6 +58,12 @@ export default class Course extends Component {
           id
         }
       });
+      if (allergy.length) {
+        dispatch({
+          type: "ADD_ALLERGY",
+          payload: allergy
+        });
+      }
       const selectedValues = [...this.state.selectedValues, id];
       this.setState({
         selectedValues
@@ -105,12 +117,7 @@ export default class Course extends Component {
                 <Typography variant="h3" gutterBottom>
                   {COURSES[this.props.step]}
                 </Typography>
-                <Grid
-                  container
-                  direction="row"
-                  justify="space-between"
-                  alignItems="stretch"
-                >
+                <Grid container direction="row" alignItems="stretch">
                   {course.map(item => (
                     <Grid
                       key={item.id}
@@ -124,7 +131,9 @@ export default class Course extends Component {
                         className={css({
                           height: "100%"
                         })}
-                        onClick={() => this.handleClick(dispatch, item.id)}
+                        onClick={() =>
+                          this.handleClick(dispatch, item.id, item.allergy)
+                        }
                       >
                         <Card
                           raised={this.state.selectedValues.includes(item.id)}

@@ -13,9 +13,17 @@ export default class Navigation extends Component {
       dispatch({
         type: "PREVIOUS_MENU"
       });
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
     } else {
       dispatch({
         type: "NEXT_MENU"
+      });
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
       });
     }
   };
@@ -24,7 +32,7 @@ export default class Navigation extends Component {
     return (
       <Consumer>
         {value => {
-          const { dispatch, step } = value;
+          const { dispatch, step, main } = value;
           return (
             <div>
               <Grid container justify="center">
@@ -34,7 +42,6 @@ export default class Navigation extends Component {
                     verb={`View ${COURSES[step - 1]}`}
                     align="left"
                     disabled={step === 0}
-                    nav="prev"
                     handleClick={() => this.handleButtonClick(dispatch, "prev")}
                   />
                 </Grid>
@@ -43,15 +50,13 @@ export default class Navigation extends Component {
                     color="primary"
                     verb={`View ${COURSES[step + 1]}`}
                     align="right"
-                    nav="next"
-                    disabled={step === 5}
+                    disabled={step === 5 || (step === 4 && main.length === 0)}
                     handleClick={() => this.handleButtonClick(dispatch, "next")}
                   />
                   <Buttons
                     color="primary"
                     verb={`View Selections`}
                     align="right"
-                    nav="next"
                     disabled={step !== 5}
                     handleClick={() => this.handleButtonClick(dispatch, "next")}
                   />

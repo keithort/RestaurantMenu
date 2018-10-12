@@ -5,6 +5,14 @@ const Context = React.createContext();
 
 const reducer = (state, action) => {
   switch (action.type) {
+    case "ADD_ALLERGY":
+      return {
+        ...state,
+        allergy: !state.allergy.includes(action.payload)
+          ? [...state.allergy, action.payload]
+          : [...state.allergy]
+      };
+
     case "ADD_ITEM":
       return {
         ...state,
@@ -26,6 +34,12 @@ const reducer = (state, action) => {
         step: state.step - 1
       };
 
+    case "REMOVE_ALLERGY":
+      return {
+        ...state,
+        allergy: [...state.allergy.filter(item => item !== action.payload)]
+      };
+
     case "REMOVE_ITEM":
       return {
         ...state,
@@ -45,6 +59,7 @@ export class Provider extends Component {
   state = {
     menu: [],
     step: 0,
+    allergy: [],
     appetizer: [],
     soup: [],
     fish: [],
