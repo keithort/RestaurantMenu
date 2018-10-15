@@ -30,7 +30,6 @@ export default class Progress extends Component {
       <Consumer>
         {value => {
           const { step } = value;
-          console.log(window.innerWidth);
           return (
             <Paper>
               <Grid

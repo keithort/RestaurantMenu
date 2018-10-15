@@ -4,7 +4,7 @@ This restaurant menu application is built using the most current version of Reac
 The application is mobile friendly and utilizes Material UI.
 
 ## State Management
-The application utilizes React's Context API for application level state management. The Context API gives application level state management without the extra weight with a similar interface. The Reducers are located in `src/Context.js`.
+The application utilizes React's Context API for application level state management. The Context API gives application level state management without the extra weight with an interface similar to Redux. The Reducers are located in `src/Context.js`.
 
 ## Style Notes
 The stylesheet located at `src/index.css` is the only one for the site. This should include only global styles. Component styles should use [Emotion](https://emotion.sh/) CSS-in-JS. Other styles are defaults from [Material UI](https://material-ui.com/).
