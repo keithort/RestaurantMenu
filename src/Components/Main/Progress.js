@@ -23,8 +23,6 @@ const Icons = {
 };
 
 export default class Progress extends Component {
-  getWidth = () => {};
-
   render() {
     return (
       <Consumer>
