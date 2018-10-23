@@ -93,7 +93,7 @@ export default class Course extends Component {
     allergens.length ? (
       <span className={css({ fontStyle: "italic" })}>
         <strong>Allergens:</strong>{" "}
-        {allergens.map((allergen, index) => (
+        {allergens.map(allergen => (
           <span
             key={allergen}
             className={css({

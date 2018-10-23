@@ -5,7 +5,7 @@ import Grid from "@material-ui/core/Grid";
 import { Consumer } from "../../Context";
 
 import Buttons from "../Utils/Buttons";
-import { COURSES, MAX_STEPS, REQUIRED_COURSE } from "../Utils/constants";
+import { COURSES, MAX_STEPS, REQUIRED_COURSES } from "../Utils/constants";
 
 const Navigation = () => {
   const handleButtonClick = (dispatch, nav) => {
@@ -47,7 +47,7 @@ const Navigation = () => {
                   align="right"
                   disabled={
                     step === MAX_STEPS ||
-                    (step === REQUIRED_COURSE && main.length === 0)
+                    (REQUIRED_COURSES.includes(step) && main.length === 0)
                   }
                   handleClick={() => handleButtonClick(dispatch, "next")}
                 />

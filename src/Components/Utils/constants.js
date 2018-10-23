@@ -17,4 +17,4 @@ export const COURSES_SHORT = [
 ];
 
 export const MAX_STEPS = 5;
-export const REQUIRED_COURSE = 4;
+export const REQUIRED_COURSES = [4];
