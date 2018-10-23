@@ -15,3 +15,6 @@ export const COURSES_SHORT = [
   "main",
   "dessert"
 ];
+
+export const MAX_STEPS = 5;
+export const REQUIRED_COURSE = 4;

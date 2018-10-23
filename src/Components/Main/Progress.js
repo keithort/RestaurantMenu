@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { css } from "emotion";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
@@ -22,46 +22,46 @@ const Icons = {
   soup
 };
 
-export default class Progress extends Component {
-  render() {
-    return (
-      <Consumer>
-        {value => {
-          const { step } = value;
-          return (
-            <Paper>
-              <Grid
-                container
-                justify="space-between"
-                wrap="nowrap"
-                className={css({ marginBottom: "2em", padding: "1em" })}
-              >
-                {COURSES_SHORT.map((course, index) => (
-                  <Grid
-                    item
-                    key={index}
+const Progress = () => {
+  return (
+    <Consumer>
+      {value => {
+        const { step } = value;
+        return (
+          <Paper>
+            <Grid
+              container
+              justify="space-between"
+              wrap="nowrap"
+              className={css({ marginBottom: "2em", padding: "1em" })}
+            >
+              {COURSES_SHORT.map((course, index) => (
+                <Grid
+                  item
+                  key={index}
+                  className={css({
+                    opacity: step === index ? "1.0" : ".4",
+                    padding: "0 .5em",
+                    textAlign: "center"
+                  })}
+                >
+                  <img
+                    src={Icons[course]}
+                    alt=""
                     className={css({
-                      opacity: step === index ? "1.0" : ".4",
-                      padding: "0 .5em",
-                      textAlign: "center"
+                      height: "auto",
+                      maxWidth: "4em",
+                      width: "100%"
                     })}
-                  >
-                    <img
-                      src={Icons[course]}
-                      alt=""
-                      className={css({
-                        height: "auto",
-                        maxWidth: "4em",
-                        width: "100%"
-                      })}
-                    />
-                  </Grid>
-                ))}
-              </Grid>
-            </Paper>
-          );
-        }}
-      </Consumer>
-    );
-  }
-}
+                  />
+                </Grid>
+              ))}
+            </Grid>
+          </Paper>
+        );
+      }}
+    </Consumer>
+  );
+};
+
+export default Progress;

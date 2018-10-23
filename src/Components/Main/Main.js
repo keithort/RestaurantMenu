@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { css } from "emotion";
 
 import { Consumer } from "../../Context";
@@ -8,8 +8,8 @@ import Menus from "./Menus";
 import Selections from "./Selections";
 import Navigation from "../Navigation/Navigation";
 
-export default class Main extends Component {
-  renderMenu = () => (
+const Main = () => {
+  const renderMenu = () => (
     <div>
       <Progress />
       <Menus />
@@ -17,24 +17,24 @@ export default class Main extends Component {
     </div>
   );
 
-  renderSelections = () => (
+  const renderSelections = () => (
     <div>
       <Selections />
     </div>
   );
 
-  render() {
-    return (
-      <Consumer>
-        {value => {
-          const { step } = value;
-          return (
-            <main className={css({ padding: "1em" })}>
-              {step !== 6 ? this.renderMenu() : this.renderSelections()}
-            </main>
-          );
-        }}
-      </Consumer>
-    );
-  }
-}
+  return (
+    <Consumer>
+      {value => {
+        const { step } = value;
+        return (
+          <main className={css({ padding: "1em" })}>
+            {step !== 6 ? renderMenu() : renderSelections()}
+          </main>
+        );
+      }}
+    </Consumer>
+  );
+};
+
+export default Main;

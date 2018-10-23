@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { css } from "emotion";
 import Typography from "@material-ui/core/Typography";
 
@@ -22,53 +22,51 @@ const Icons = {
   shellfish
 };
 
-export default class Allergies extends Component {
-  render() {
-    return (
-      <Consumer>
-        {value => {
-          const { allergy } = value;
-          const allergens = Array.from(new Set(allergy.flat(1)));
-          return (
-            <Typography
-              variant="subheading"
-              gutterBottom
-              className={css({
-                borderBottom: "1px solid red",
-                borderTop: "1px solid red",
-                marginBottom: "2em",
-                marginTop: "1em",
-                paddingBottom: ".5em",
-                paddingTop: ".5em"
-              })}
-            >
-              <strong
-                className={css({ display: "block", marginBottom: "-1em" })}
-              >
-                Allergens:
-              </strong>
-              <br />
-              {allergens.length
-                ? allergens.map((allergen, index) => (
-                    <span
-                      key={allergen}
-                      className={css({
-                        display: "inline-block",
-                        marginRight: ".75em"
-                      })}
-                    >
-                      <img
-                        src={Icons[allergen]}
-                        alt={allergen}
-                        className={css({ height: "auto", width: "1.5em" })}
-                      />
-                    </span>
-                  ))
-                : null}
-            </Typography>
-          );
-        }}
-      </Consumer>
-    );
-  }
-}
+const Allergies = () => {
+  return (
+    <Consumer>
+      {value => {
+        const { allergy } = value;
+        const allergens = Array.from(new Set(allergy.flat(1)));
+        return (
+          <Typography
+            variant="subheading"
+            gutterBottom
+            className={css({
+              borderBottom: "1px solid red",
+              borderTop: "1px solid red",
+              marginBottom: "2em",
+              marginTop: "1em",
+              paddingBottom: ".5em",
+              paddingTop: ".5em"
+            })}
+          >
+            <strong className={css({ display: "block", marginBottom: "-1em" })}>
+              Allergens:
+            </strong>
+            <br />
+            {allergens.length
+              ? allergens.map((allergen, index) => (
+                  <span
+                    key={allergen}
+                    className={css({
+                      display: "inline-block",
+                      marginRight: ".75em"
+                    })}
+                  >
+                    <img
+                      src={Icons[allergen]}
+                      alt={allergen}
+                      className={css({ height: "auto", width: "1.5em" })}
+                    />
+                  </span>
+                ))
+              : null}
+          </Typography>
+        );
+      }}
+    </Consumer>
+  );
+};
+
+export default Allergies;
