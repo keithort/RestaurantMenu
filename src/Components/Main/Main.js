@@ -7,6 +7,7 @@ import Progress from "./Progress";
 import Menus from "./Menus";
 import Selections from "./Selections";
 import Navigation from "../Navigation/Navigation";
+import { MAX_STEPS } from "../Utils/constants";
 
 const Main = () => {
   const renderMenu = () => (
@@ -29,7 +30,7 @@ const Main = () => {
         const { step } = value;
         return (
           <main className={css({ padding: "1em" })}>
-            {step !== 6 ? renderMenu() : renderSelections()}
+            {step <= MAX_STEPS ? renderMenu() : renderSelections()}
           </main>
         );
       }}
